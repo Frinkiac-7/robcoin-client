@@ -1,6 +1,7 @@
 'use strict'
 
 const getFormFields = require('../../lib/get-form-fields')
+// const store = require('./store')
 const api = require('./api')
 const ui = require('./ui')
 
@@ -36,6 +37,7 @@ const signUp = function (event) {
   } else {
     api.signUp(userForm)
       .then(ui.signUpSuccess)
+      .then(api.initNewAcct)
       // .catch(ui.signUpFailure)
       .catch(console.error())
   }

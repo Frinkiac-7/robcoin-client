@@ -3,11 +3,11 @@ const store = require('./store')
 // Sign-in functions
 const signInSuccess = function (data) {
   store.user = data.user
+  $('#sign-in-form')[0].reset()
   console.log('store.user is', store.user)
   $('#pre-login').slideUp('slow')
   $('#post-login').slideDown('slow')
   $('#sign-in-modal').modal('toggle')
-  $('#sign-in-form')[0].reset()
 }
 
 const signInFailure = function (data) {
@@ -17,12 +17,12 @@ const signInFailure = function (data) {
 // Sign-up functions
 const signUpSuccess = function (data) {
   store.user = data.user
-  // $('#message').text('User ' + data.user.email + ' is signed in.')
+  $('#sign-in-form')[0].reset()
+  $('#sign-up-status').text('User ' + data.user.email + ' account created with bank account #TO_DO')
   console.log('store.user is', store.user)
   // $('#pre-login').slideUp('slow')
   // $('#post-login').slideDown('slow')
   // $('#sign-up-modal').modal('toggle')
-  $('#sign-in-form')[0].reset()
   $('#sign-up-status').text('YAY!  You\'ve created an account!')
   $('#sign-up-modal').modal('toggle')
   $('#sign-in-modal').modal('toggle')

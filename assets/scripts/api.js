@@ -48,9 +48,27 @@ const changePW = function (data) {
   })
 }
 
+const initNewAcct = function () {
+  const data = {
+    'balance': {
+      'user_id': store.user.id,
+      'balance': 500
+    }
+  }
+  return $.ajax({
+    url: config.apiOrigin + '/balances',
+    method: 'POST',
+    headers: {
+      contentType: 'applications/json'
+    },
+    data
+  })
+}
+
 module.exports = {
   signIn,
   signUp,
   signOut,
-  changePW
+  changePW,
+  initNewAcct
 }
