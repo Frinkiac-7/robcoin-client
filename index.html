@@ -12,17 +12,17 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
-      <div class="row">
+      <div class="row"> <!-- Begin of header -->
         <div class="col-md-1"></div>
         <div class="col-md-10 nbr-header">
           <h1>National Bank of Robcoin</h1>
         </div>
         <div class="col-md-1"></div>
-      </div>
+      </div> <!-- End of header -->
       <div class="row spacer">
         <div class="col-lg-12"><p></p></div>
       </div>
-      <div class="row">
+      <div class="row"> <!-- Begin of main body -->
         <div class="col-lg-12"><p></p></div>
         <div class="row">
           <div class="col-md-2"></div>
@@ -42,14 +42,81 @@
               </div>
               <div id="pre-login" class="row">
                 <div class="col-md-3"></div>
-                <div class="col-md-3"><button>SIGN IN</button></div>
-                <div class="col-md-3"><button>SIGN UP</button></div>
+                <div class="col-md-3">
+                  <!-- Sign-in button trigger modal -->
+                  <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#sign-in-modal">
+                    Sign-in
+                  </button>
+
+                  <!-- Sign-in Modal -->
+                  <div class="modal fade modal-label" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title">Sign-in</h4>
+                        </div>
+                        <div class="modal-body">
+                          <form id="sign-in-form">
+                            <div class="form-group">
+                              <label for="email" class="control-label">Enter your email</label>
+                              <input name="credentials[email]" type="text" class="form-control" placeholder="user@domain.com">
+                              <label for="password" class="control-label">Enter your password</label>
+                              <input name="credentials[password]" type="password" class="form-control" placeholder="Enter your password">
+                            </div>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Sign-In</button>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <p id="sign-in-status">test</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div> <!-- Sign-in modal ends -->
+                </div>
+                <div class="col-md-3">
+                  <!-- Sign-in button trigger modal -->
+                  <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#sign-up-modal">
+                    Sign-up
+                  </button>
+
+                  <!-- Sign-up Modal -->
+                  <div class="modal fade modal-label" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title">Sign-Up for an account!</h4>
+                        </div>
+                        <div class="modal-body">
+                          <form id="sign-up-form">
+                            <div class="form-group">
+                              <label for="email" class="control-label">Enter your email</label>
+                              <input name="credentials[email]" type="text" class="form-control" placeholder="user@domain.com">
+                              <label for="password" class="control-label">Enter your password</label>
+                              <input name="credentials[password]" type="password" class="form-control" placeholder="Enter your desired password">
+                              <label for="password" class="control-label">Retype your password</label>
+                              <input name="credentials[password_confirmation]" type="password" class="form-control" placeholder="Confirm your new password">
+                            </div>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Sign-Up</button>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <p id="sign-up-status">test</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div> <!-- Sign-up modal ends -->
+
+                </div>
                 <div class="col-md-3"></div>
               </div>
               <div id="post-login" class="row">
                 <div class="col-md-3"></div>
-                <div class="col-md-3"><button>Change Password</button></div>
-                <div class="col-md-3"><button>SIGN OUT</button></div>
+                <div class="col-md-3"><button id="change-pw">Change Password</button></div>
+                <div class="col-md-3"><button id="sign-out">SIGN OUT</button></div>
                 <div class="col-md-3"></div>
               </div>
               <div class="row spacer">
@@ -59,6 +126,6 @@
           </div>
           <div class="col-md-2"></div>
         </div>
-      </div>
+      </div> <!-- End of main body -->
     </body>
 </html>

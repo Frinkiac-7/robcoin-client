@@ -14,6 +14,10 @@ button {
   width: 150px;
 }
 
+.modal-label {
+  color: $black;
+}
+
 .logo-content {
   float: inherit;
   text-align: left;
@@ -34,6 +38,11 @@ button {
 .test {
   border-radius: 8%;
   border-style: solid;
+  color: $white;
   display: inline-block;
   height: inherit;
+}
+
+.user-form-label {
+  color: $black;
 }

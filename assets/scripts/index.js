@@ -8,8 +8,11 @@
 
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
+const events = require('./events')
 
 $(() => {
   setAPIOrigin(location, config)
   $('#post-login').hide()
+  $('#sign-in-form').submit(events.signIn)
+  $('#sign-up-form').submit(events.signUp)
 })
