@@ -58,9 +58,19 @@ const signOut = function () {
     .catch(console.error)
 }
 
+const postTransaction = function () {
+  console.log('postTransaction invoked')
+}
+
+const checkBalance = function () {
+  console.log('checkBalance invoked')
+}
+
 module.exports = {
   signIn,
   signUp,
   signOut,
-  changePW
+  changePW,
+  postTransaction,
+  checkBalance
 }

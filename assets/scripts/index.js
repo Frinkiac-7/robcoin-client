@@ -17,4 +17,6 @@ $(() => {
   $('#sign-up-form').submit(events.signUp)
   $('#change-pw-form').submit(events.changePW)
   $('#sign-out-btn').click('button', events.signOut)
+  $('#post-trans-btn').click('button', events.postTransaction)
+  $('#chck-acct-blnc').click('button', events.checkBalance)
 })
