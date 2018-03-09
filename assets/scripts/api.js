@@ -61,7 +61,32 @@ const initNewAcct = function () {
     headers: {
       contentType: 'applications/json'
     },
+    success: function (data) {
+      console.log('data is', data)
+      store.account = data
+      console.log('store.account is', store.account)
+      return data
+    },
     data
+  })
+}
+
+const checkBalance = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/balances/' + store.user.id,
+    method: 'GET',
+    headers: {
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
+    },
+    success: function (data) {
+      store.account = data.balance
+      console.log('data is', data)
+      console.log('balance from data.balance.balance is ', data.balance.balance)
+      console.log('store.account is', store.account)
+      console.log('balance from store.account.balance is ', store.account.balance)
+      return data
+    }
   })
 }
 
@@ -70,5 +95,6 @@ module.exports = {
   signUp,
   signOut,
   changePW,
-  initNewAcct
+  initNewAcct,
+  checkBalance
 }

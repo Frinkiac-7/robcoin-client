@@ -53,17 +53,22 @@ const changePW = function (event) {
 }
 
 const signOut = function () {
+  event.preventDefault()
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(console.error)
 }
 
 const postTransaction = function () {
+  event.preventDefault()
   console.log('postTransaction invoked')
 }
 
 const checkBalance = function () {
+  event.preventDefault()
   console.log('checkBalance invoked')
+  api.checkBalance()
+    .then(console.log('shit seems to have worked \' cuz data is...?'))
 }
 
 module.exports = {
