@@ -20,11 +20,11 @@ const signIn = function (event) {
   } else {
     api.signIn(userForm)
       .then(ui.signInSuccess)
-      .catch(console.error())
+      .catch(ui.signInFailure)
   }
 }
 
-const signUp = function (data) {
+const signUp = function (event) {
   event.preventDefault()
   const userForm = getFormFields(this)
   if (userForm.credentials.password !== userForm.credentials.password_confirmation) {
@@ -41,7 +41,24 @@ const signUp = function (data) {
   }
 }
 
+const changePW = function (event) {
+  event.preventDefault()
+  const userForm = getFormFields(this)
+  console.log('userForm is', userForm)
+  api.changePW(userForm)
+    .then(ui.changePWSuccess)
+    .catch(console.error())
+}
+
+const signOut = function () {
+  api.signOut()
+    .then(ui.signOutSuccess)
+    .catch(console.error)
+}
+
 module.exports = {
   signIn,
-  signUp
+  signUp,
+  signOut,
+  changePW
 }

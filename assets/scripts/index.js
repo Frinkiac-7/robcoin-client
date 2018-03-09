@@ -15,4 +15,6 @@ $(() => {
   $('#post-login').hide()
   $('#sign-in-form').submit(events.signIn)
   $('#sign-up-form').submit(events.signUp)
+  $('#change-pw-form').submit(events.changePW)
+  $('#sign-out-btn').click('button', events.signOut)
 })
