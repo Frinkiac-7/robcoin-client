@@ -2,7 +2,7 @@
 
 const config = {
   apiOrigins: {
-    production: 'https://robcoin.herokuapp.com'
+    production: 'https://robcoin.herokuapp.com/'
   }
 }
 
