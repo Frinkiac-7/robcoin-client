@@ -91,33 +91,32 @@ const checkBalance = function () {
 
 const postTransaction = function (data) {
   event.preventDefault()
-  console.log('postTransaction invoked')
-  console.log('store.account.balance.balance is', store.account.balance.balance)
-  console.log('store.account.balance.balance is type', typeof store.account.balance.balance)
   store.transaction = data.transaction
-  console.log('store.transaction.amount is', store.transaction.amount)
-  console.log('store.transaction.amount is type', typeof Number(store.transaction.amount))
-  const delta = store.account.balance.balance - Number(store.transaction.amount)
-  console.log('delta is', delta)
-  console.log('store.user.id is', store.user.id)
-  console.log('store.user.id is type', typeof store.user.id)
-  console.log('store.user.token is', store.user.token)
-  console.log('store.user.token is type', typeof store.user.token)
-  console.log('store.account is', store.account.balance.id)
-  console.log('store.account.balance.id is type', typeof store.account.balance.id)
-  return $.ajax({
-    url: config.apiOrigin + '/balances/' + store.user.id,
-    method: 'PATCH',
-    headers: {
-      Authorization: 'Token token=' + store.user.token,
-      contentType: 'application/json'
-    },
-    data: {
-      'balance': {
-        'balance': delta
-      }
+  if (store.transaction.type === 'false') {
+    $('#post-trans-status').text('Form requires a transaction type.  Please choose one from the list.')
+  } else {
+    let delta = ''
+    if (store.transaction.type === 'deposit') {
+      delta = store.account.balance.balance + Number(store.transaction.amount)
+      console.log('deposit selected, delta is', delta)
+    } else if (store.transaction.type === 'withdrawal') {
+      delta = store.account.balance.balance - Number(store.transaction.amount)
+      console.log('withdrawal selected, delta is', delta)
     }
-  })
+    return $.ajax({
+      url: config.apiOrigin + '/balances/' + store.user.id,
+      method: 'PATCH',
+      headers: {
+        Authorization: 'Token token=' + store.user.token,
+        contentType: 'application/json'
+      },
+      data: {
+        'balance': {
+          'balance': delta
+        }
+      }
+    })
+  }
 }
 
 module.exports = {

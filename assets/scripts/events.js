@@ -10,21 +10,10 @@ const store = require('./store')
 const signIn = function (event) {
   event.preventDefault()
   const userForm = getFormFields(this)
-  if (userForm.credentials.email === '' && userForm.credentials.password === '') {
-    $('#sign-in-status').text('Email address and password fields can\'t be blank.')
-    $('#sign-in-form')[0].reset()
-  } else if (userForm.credentials.email === '') {
-    $('#sign-in-status').text('Email can\'t be blank.  Please enter an email address.')
-    $('#sign-in-form')[0].reset()
-  } else if (userForm.credentials.password === '') {
-    $('#sign-in-status').text('Password can\'t be blank.  Please enter a password.')
-    $('#sign-in-form')[0].reset()
-  } else {
-    api.signIn(userForm)
-      .then(ui.signInSuccess)
-      .then(api.checkBalance)
-      .catch(ui.signInFailure)
-  }
+  api.signIn(userForm)
+    .then(ui.signInSuccess)
+    .then(api.checkBalance)
+    .catch(ui.signInFailure)
 }
 
 const signUp = function (event) {
@@ -32,9 +21,6 @@ const signUp = function (event) {
   const userForm = getFormFields(this)
   if (userForm.credentials.password !== userForm.credentials.password_confirmation) {
     $('#sign-up-status').text('Your passwords didn\'t match. Please try again')
-    $('#sign-up-form')[0].reset()
-  } else if (userForm.credentials.email === '') {
-    $('#sign-up-status').text('The email field can\'t be blank. Please try again')
     $('#sign-up-form')[0].reset()
   } else {
     api.signUp(userForm)
@@ -63,6 +49,7 @@ const signOut = function () {
 
 const postTransaction = function (event) {
   event.preventDefault()
+  // $('#trans-submit').attr('disabled', 'disabled')
   const userForm = getFormFields(this)
   console.log('postTransaction invoked. userForms is', userForm)
   console.log('in events.postTransaction BEFORE executing api.postTransaction. store.account is', store.account)
@@ -78,11 +65,21 @@ const checkBalance = function () {
     .then(ui.displayBalance)
 }
 
+const reset = function () {
+  console.log('test clear function invoked')
+  $('#sign-in-form')[0].reset()
+  $('#sign-in-status').text('')
+  $('#sign-up-form')[0].reset()
+  $('#sign-up-status').text('')
+  $('#post-trans-form')[0].reset()
+  $('#post-trans-status').text('')
+}
 module.exports = {
   signIn,
   signUp,
   signOut,
   changePW,
   postTransaction,
-  checkBalance
+  checkBalance,
+  reset
 }

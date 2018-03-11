@@ -1,10 +1,10 @@
 const store = require('./store')
-const api = require('./api')
 
 // Sign-in functions
 const signInSuccess = function (data) {
   store.user = data.user
   $('#sign-in-form')[0].reset()
+  $('#sign-in-status').text('')
   console.log('store.user is', store.user)
   $('#pre-login').slideUp('slow')
   $('#post-login').slideDown('slow')
@@ -21,14 +21,14 @@ const signInFailure = function (data) {
 const signUpSuccess = function (data) {
   store.user = data.user
   $('#sign-up-form')[0].reset()
-  $('#sign-up-status').text('User ' + data.user.email + ' account created with bank account #TO_DO')
+  $('#sign-up-status').text('')
   console.log('store.user is', store.user)
   // $('#pre-login').slideUp('slow')
   // $('#post-login').slideDown('slow')
   // $('#sign-up-modal').modal('toggle')
-  $('#sign-up-status').text('YAY!  You\'ve created an account!')
   $('#sign-up-modal').modal('toggle')
   $('#sign-in-modal').modal('toggle')
+  $('#sign-in-status').text('User account for ' + store.user.email + ' successfully created.  Please sign in!')
 }
 
 const signUpFailure = function (data) {

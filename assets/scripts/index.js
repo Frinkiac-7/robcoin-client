@@ -20,4 +20,7 @@ $(() => {
   $('#post-trans-form').submit(events.postTransaction)
   $('#sign-out-btn').click('button', events.signOut)
   $('#chck-acct-btn').click('button', events.checkBalance)
+  $('#sign-in-cancel').click('button', events.reset)
+  $('#sign-up-cancel').click('button', events.reset)
+  $('#post-trans-cancel').click('button', events.reset)
 })
