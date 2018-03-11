@@ -21,6 +21,7 @@ const signIn = function (event) {
   } else {
     api.signIn(userForm)
       .then(ui.signInSuccess)
+      .then(api.checkBalance)
       .catch(ui.signInFailure)
   }
 }
@@ -59,9 +60,11 @@ const signOut = function () {
     .catch(console.error)
 }
 
-const postTransaction = function () {
+const postTransaction = function (event) {
   event.preventDefault()
-  console.log('postTransaction invoked')
+  const userForm = getFormFields(this)
+  console.log('postTransaction invoked. userForms is', userForm)
+  api.postTransaction(userForm)
 }
 
 const checkBalance = function () {
@@ -69,6 +72,7 @@ const checkBalance = function () {
   console.log('checkBalance invoked')
   api.checkBalance()
     .then(console.log('shit seems to have worked \' cuz data is...?'))
+    .then(ui.displayBalance)
 }
 
 module.exports = {

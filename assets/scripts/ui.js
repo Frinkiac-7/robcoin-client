@@ -7,6 +7,7 @@ const signInSuccess = function (data) {
   console.log('store.user is', store.user)
   $('#pre-login').slideUp('slow')
   $('#post-login').slideDown('slow')
+  $('#acct-trans').slideDown('slow')
   $('#sign-in-modal').modal('toggle')
 }
 
@@ -17,7 +18,7 @@ const signInFailure = function (data) {
 // Sign-up functions
 const signUpSuccess = function (data) {
   store.user = data.user
-  $('#sign-in-form')[0].reset()
+  $('#sign-up-form')[0].reset()
   $('#sign-up-status').text('User ' + data.user.email + ' account created with bank account #TO_DO')
   console.log('store.user is', store.user)
   // $('#pre-login').slideUp('slow')
@@ -43,11 +44,18 @@ const changePWSuccess = function (data) {
   $('#change-pw-form')[0].reset()
   $('#change-pw-modal').modal('toggle')
 }
+
+const displayBalance = function () {
+  $('#acct-id').text(store.account.id)
+  $('#acct-blnc').text(store.account.balance)
+}
+
 module.exports = {
   signInSuccess,
   signInFailure,
   signUpSuccess,
   signUpFailure,
   signOutSuccess,
-  changePWSuccess
+  changePWSuccess,
+  displayBalance
 }

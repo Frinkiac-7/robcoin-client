@@ -72,6 +72,7 @@ const initNewAcct = function () {
 }
 
 const checkBalance = function () {
+  console.log('checkBalance invoked')
   return $.ajax({
     url: config.apiOrigin + '/balances/' + store.user.id,
     method: 'GET',
@@ -80,12 +81,41 @@ const checkBalance = function () {
       Authorization: 'Token token=' + store.user.token
     },
     success: function (data) {
-      store.account = data.balance
-      console.log('data is', data)
-      console.log('balance from data.balance.balance is ', data.balance.balance)
-      console.log('store.account is', store.account)
-      console.log('balance from store.account.balance is ', store.account.balance)
+      store.account = data
+      console.log('in checkBalance, store.account is', store.account)
+      console.log('in checkBalance, data is', data)
       return data
+    }
+  })
+}
+
+const postTransaction = function (data) {
+  event.preventDefault()
+  console.log('postTransaction invoked')
+  console.log('store.account.balance.balance is', store.account.balance.balance)
+  console.log('store.account.balance.balance is type', typeof store.account.balance.balance)
+  store.transaction = data.transaction
+  console.log('store.transaction.amount is', store.transaction.amount)
+  console.log('store.transaction.amount is type', typeof Number(store.transaction.amount))
+  const delta = store.account.balance.balance - Number(store.transaction.amount)
+  console.log('delta is', delta)
+  console.log('store.user.id is', store.user.id)
+  console.log('store.user.id is type', typeof store.user.id)
+  console.log('store.user.token is', store.user.token)
+  console.log('store.user.token is type', typeof store.user.token)
+  console.log('store.account is', store.account.balance.id)
+  console.log('store.account.balance.id is type', typeof store.account.balance.id)
+  return $.ajax({
+    url: config.apiOrigin + '/balances/' + store.user.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token,
+      contentType: 'application/json'
+    },
+    data: {
+      'balance': {
+        'balance': delta
+      }
     }
   })
 }
@@ -96,5 +126,6 @@ module.exports = {
   signOut,
   changePW,
   initNewAcct,
-  checkBalance
+  checkBalance,
+  postTransaction
 }
