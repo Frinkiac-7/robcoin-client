@@ -4,6 +4,7 @@ const getFormFields = require('../../lib/get-form-fields')
 // const store = require('./store')
 const api = require('./api')
 const ui = require('./ui')
+const store = require('./store')
 
 // Sign-in functions
 const signIn = function (event) {
@@ -64,7 +65,9 @@ const postTransaction = function (event) {
   event.preventDefault()
   const userForm = getFormFields(this)
   console.log('postTransaction invoked. userForms is', userForm)
+  console.log('in events.postTransaction BEFORE executing api.postTransaction. store.account is', store.account)
   api.postTransaction(userForm)
+    .then(ui.onPostTransactionSuccess)
 }
 
 const checkBalance = function () {

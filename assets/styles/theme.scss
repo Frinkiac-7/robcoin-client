@@ -1,5 +1,5 @@
 body {
-  background: $gray20;
+  background: $nightrider;
   color: $white;
   text-align: center;
 }
@@ -31,11 +31,25 @@ button {
   text-align: center;
 }
 
-.spacer {
+.spacer-sm {
+  height: 25px;
+}
+
+.spacer-lg {
   height: 50px;
 }
 
 .test {
+  background: $madison;
+  border-radius: 8%;
+  border-style: solid;
+  color: $white;
+  display: inline-block;
+  height: inherit;
+}
+
+.test-sm {
+  background: $shuttlegrey;
   border-radius: 8%;
   border-style: solid;
   color: $white;
