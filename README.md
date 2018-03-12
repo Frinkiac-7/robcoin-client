@@ -2,7 +2,7 @@
 
 # Robcoin - Fun with cryptocurrency
 
-Robcoin is an account management app for an eponymous pseudo-cryptocurrency.
+Robcoin is an account management app for an eponymous pseudo-cryptocurrency.  The backend API repo can be found at https://github.com/Frinkiac-7/robcoin
 
 ## Features
 
