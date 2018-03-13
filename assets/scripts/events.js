@@ -1,7 +1,6 @@
 'use strict'
 
 const getFormFields = require('../../lib/get-form-fields')
-// const store = require('./store')
 const api = require('./api')
 const ui = require('./ui')
 const store = require('./store')
@@ -12,12 +11,9 @@ const signIn = function (event) {
   const userForm = getFormFields(this)
   api.signIn(userForm)
     .then(ui.signInSuccess)
-    // .then(api.initNewAcct)
-    .then(api.checkBalance)
+    .then(api.getAcctStatus)
+    // .then(api.checkBalance)
     .catch(ui.signInFailure)
-  if (store.status === 'new') {
-    api.initNewAcct()
-  }
 }
 
 const signUp = function (event) {
@@ -29,6 +25,7 @@ const signUp = function (event) {
   } else {
     api.signUp(userForm)
       .then(ui.signUpSuccess)
+      // .then(initNewAcct())
       // .catch(ui.signUpFailure)
       .catch(console.error())
   }
@@ -37,7 +34,6 @@ const signUp = function (event) {
 const changePW = function (event) {
   event.preventDefault()
   const userForm = getFormFields(this)
-  console.log('userForm is', userForm)
   api.changePW(userForm)
     .then(ui.changePWSuccess)
     .catch(console.error())
@@ -50,26 +46,26 @@ const signOut = function () {
     .catch(console.error)
 }
 
+const initNewAcct = function () {
+  api.initNewAcct()
+    .then(ui.initNewAcctSuccess)
+}
 const postTransaction = function (event) {
   event.preventDefault()
   // $('#trans-submit').attr('disabled', 'disabled')
   const userForm = getFormFields(this)
-  console.log('postTransaction invoked. userForms is', userForm)
-  console.log('in events.postTransaction BEFORE executing api.postTransaction. store.account is', store.account)
   api.postTransaction(userForm)
+    .then(api.checkBalance)
     .then(ui.onPostTransactionSuccess)
 }
 
 const checkBalance = function () {
   event.preventDefault()
-  console.log('checkBalance invoked')
   api.checkBalance()
-    .then(console.log('shit seems to have worked \' cuz data is...?'))
-    .then(ui.displayBalance)
+    .then(ui.displayBalance())
 }
 
 const reset = function () {
-  console.log('test clear function invoked')
   $('#sign-in-form')[0].reset()
   $('#sign-in-status').text('')
   $('#sign-up-form')[0].reset()
@@ -84,5 +80,6 @@ module.exports = {
   changePW,
   postTransaction,
   checkBalance,
+  initNewAcct,
   reset
 }

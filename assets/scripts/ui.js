@@ -5,12 +5,16 @@ const signInSuccess = function (data) {
   store.user = data.user
   $('#sign-in-form')[0].reset()
   $('#sign-in-status').text('')
-  console.log('store.user is', store.user)
   $('#pre-login').slideUp('slow')
   $('#post-login').slideDown('slow')
   $('#acct-trans').slideDown('slow')
   $('#sign-in-modal').modal('toggle')
   $('#user-status').text('Welcome ' + store.user.email + '!')
+}
+
+const initNewAcctSuccess = function () {
+  console.log('fuq ya')
+  console.log('in initNewAcctSuccess: store.account is', store.account)
 }
 
 const signInFailure = function (data) {
@@ -21,17 +25,12 @@ const signInFailure = function (data) {
 const signUpSuccess = function (data) {
   store.user = data.user
   store.status = 'new'
-  console.log(store.user)
-  console.log(store.status)
   $('#sign-up-form')[0].reset()
   $('#sign-up-status').text('')
-  console.log('store.user is', store.user)
-  // $('#pre-login').slideUp('slow')
-  // $('#post-login').slideDown('slow')
-  // $('#sign-up-modal').modal('toggle')
   $('#sign-up-modal').modal('toggle')
   $('#sign-in-modal').modal('toggle')
-  $('#sign-in-status').text('User account for ' + store.user.email + ' successfully created.  Please sign in!')
+  $('#sign-in-status').text('This is your first login!')
+  return store.status
 }
 
 const signUpFailure = function (data) {
@@ -47,20 +46,18 @@ const signOutSuccess = function (data) {
 }
 
 const changePWSuccess = function (data) {
-  console.log('changePWSuccess invoked')
   $('#change-pw-form')[0].reset()
   $('#change-pw-modal').modal('toggle')
   $('#user-status').text('Password for ' + store.user.email + 'successfully changed!')
 }
 
-const displayBalance = function () {
+const displayBalance = function (data) {
   $('#acct-id').text(store.account.id)
-  $('#acct-blnc').text(store.account.balance.balance)
-  $('#user-status').text(store.user.email + '\'s balance is ' + store.account.balance.balance)
+  $('#acct-blnc').text(store.account.balance)
+  $('#user-status').text(store.user.email + '\'s balance is ' + store.account.balance)
 }
 
 const onPostTransactionSuccess = function () {
-  console.log('ui.onPostTransactionSuccess invoked')
   $('#post-trans-form')[0].reset()
   $('#post-trans').modal('toggle')
   $('#user-status').text(store.user.email + '\'s balance has changed.  Click Check Balance to see your account balance.')
@@ -74,5 +71,6 @@ module.exports = {
   signOutSuccess,
   changePWSuccess,
   displayBalance,
-  onPostTransactionSuccess
+  onPostTransactionSuccess,
+  initNewAcctSuccess
 }

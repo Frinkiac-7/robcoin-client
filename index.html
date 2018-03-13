@@ -35,7 +35,7 @@
                 <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#sign-in-modal">Sign-in
                 </button>
                 <!-- Sign-in Modal -->
-                <div class="modal fade modal-label" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div data-backdrop="static" data-keyboard="false" class="modal fade modal-label" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -66,7 +66,7 @@
                 <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#sign-up-modal">Sign-up
                 </button>
                 <!-- Sign-up Modal -->
-                <div class="modal fade modal-label" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div data-backdrop="static" data-keyboard="false" class="modal fade modal-label" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -100,14 +100,14 @@
               </div>
             </div>  <!-- Pre-login div ends -->
 
-            <div id="post-login" class="row"> <!-- Post-login div ends -->
+            <div id="post-login" class="row"> <!-- Post-login div starts -->
               <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-3">  <!-- Change pw modal starts -->
                   <!-- Change password button trigger modal -->
                   <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#change-pw-modal">Change password</button>
                   <!-- Change password Modal -->
-                  <div class="modal fade modal-label" id="change-pw-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div data-keyboard="false" data-backdrop="static" class="modal fade modal-label" id="change-pw-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -161,7 +161,8 @@
                   <div class="col-lg-12"></div>
                 </div>
               </div>
-            </div> <!-- Ends post-login div -->
+            </div> <!-- Post-login div ends -->
+
             <div class="row spacer">
               <div class="col-lg-12"><p></p></div>
             </div>
@@ -169,9 +170,11 @@
           <div class="col-md-1"></div>
         </div>  <!-- Main Robcoin div end -->
       </div>  <!-- Robcoin intro end -->
+
       <div class="row spacer">
         <div id="user-status" class="col-lg-12"><p>No user signed in</p></div>
       </div>
+
       <div id="acct-trans" class="row"> <!-- Account transaction div starts -->
         <div class="col-md-3"><p></p></div>
         <div class="col-md-3 test"> <!-- Check balance modal starts -->
@@ -181,7 +184,7 @@
           <!-- Post transaction button trigger modal -->
           <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#post-trans">Post transaction</button>
           <!-- Post transaction modal -->
-          <div class="modal fade modal-label" id="post-trans" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div data-backdrop="static" data-keyboard="false" class="modal fade modal-label" id="post-trans" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -216,8 +219,9 @@
           </div>
         </div> <!-- Post transaction modal ends -->
       </div>  <!-- Account transaction div ends -->
+
       <div class="row spacer">
-        <div class="col-lg-12"><p>version .51</p></div>
+        <div class="col-lg-12"><p>version 1.0</p></div>
       </div>
     </body>
 </html>

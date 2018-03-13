@@ -59,33 +59,46 @@ const initNewAcct = function () {
     url: config.apiOrigin + '/balances',
     method: 'POST',
     headers: {
-      Authorization: 'Token token=' + store.user.token,
-      contentType: 'applications/json'
+      contentType: 'applications/json',
+      Authorization: 'Token token=' + store.user.token
     },
     success: function (data) {
-      console.log('data is', data)
-      store.account = data
-      console.log('store.account is', store.account)
+      store.account = data.balance
       return data
     },
     data
   })
 }
 
-const checkBalance = function () {
-  console.log('checkBalance invoked')
+const getAcctStatus = function () {
   return $.ajax({
-    url: config.apiOrigin + '/balances/' + store.user.id,
+    url: config.apiOrigin + '/balances',
+    method: 'GET',
+    headers: {
+      contentType: 'applications/json',
+      Authorization: 'Token token=' + store.user.token
+    },
+    success: function (data) {
+      const length = data.balances.length
+      if (length === 0) {
+        initNewAcct()
+      }
+      store.account = data.balances[0]
+    }
+  })
+}
+
+const checkBalance = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/balances/' + store.account.id,
     method: 'GET',
     headers: {
       contentType: 'application/json',
       Authorization: 'Token token=' + store.user.token
     },
     success: function (data) {
-      store.account = data
-      console.log('in checkBalance, store.account is', store.account)
-      console.log('in checkBalance, data is', data)
-      return data
+      store.account = data.balance
+      return store.account
     }
   })
 }
@@ -98,14 +111,12 @@ const postTransaction = function (data) {
   } else {
     let delta = ''
     if (store.transaction.type === 'deposit') {
-      delta = store.account.balance.balance + Number(store.transaction.amount)
-      console.log('deposit selected, delta is', delta)
+      delta = store.account.balance + Number(store.transaction.amount)
     } else if (store.transaction.type === 'withdrawal') {
-      delta = store.account.balance.balance - Number(store.transaction.amount)
-      console.log('withdrawal selected, delta is', delta)
+      delta = store.account.balance - Number(store.transaction.amount)
     }
     return $.ajax({
-      url: config.apiOrigin + '/balances/' + store.user.id,
+      url: config.apiOrigin + '/balances/' + store.account.id,
       method: 'PATCH',
       headers: {
         Authorization: 'Token token=' + store.user.token,
@@ -127,5 +138,6 @@ module.exports = {
   changePW,
   initNewAcct,
   checkBalance,
-  postTransaction
+  postTransaction,
+  getAcctStatus
 }
