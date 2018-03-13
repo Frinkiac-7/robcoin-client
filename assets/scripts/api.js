@@ -59,6 +59,7 @@ const initNewAcct = function () {
     url: config.apiOrigin + '/balances',
     method: 'POST',
     headers: {
+      Authorization: 'Token token=' + store.user.token,
       contentType: 'applications/json'
     },
     success: function (data) {

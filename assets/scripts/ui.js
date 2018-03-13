@@ -20,6 +20,9 @@ const signInFailure = function (data) {
 // Sign-up functions
 const signUpSuccess = function (data) {
   store.user = data.user
+  store.status = 'new'
+  console.log(store.user)
+  console.log(store.status)
   $('#sign-up-form')[0].reset()
   $('#sign-up-status').text('')
   console.log('store.user is', store.user)

@@ -12,8 +12,12 @@ const signIn = function (event) {
   const userForm = getFormFields(this)
   api.signIn(userForm)
     .then(ui.signInSuccess)
+    // .then(api.initNewAcct)
     .then(api.checkBalance)
     .catch(ui.signInFailure)
+  if (store.status === 'new') {
+    api.initNewAcct()
+  }
 }
 
 const signUp = function (event) {
@@ -25,7 +29,6 @@ const signUp = function (event) {
   } else {
     api.signUp(userForm)
       .then(ui.signUpSuccess)
-      .then(api.initNewAcct)
       // .catch(ui.signUpFailure)
       .catch(console.error())
   }
