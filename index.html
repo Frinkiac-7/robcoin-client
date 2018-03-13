@@ -22,7 +22,7 @@
             <img src="https://i.imgur.com/pTTIxQG.png" alt="Frinkiac-7 logo" class="logo-img">
             <div class="logo-content">
               <h1 class="logo-title">Robcoin - Cryptocurrency for Your Daily Life</h1>
-              <p>The Nation Bank of Robcoin is the exclusive source for management of the hottest new cryptocurrency available today!  All accounts are insured up to the limits set by FRDIC (Federal Robcoin Deposit Insurance Corporation) and covered by all applicable laws.</p>
+              <p>The Nation Bank of Robcoin is the exclusive source for management of the hottest new cryptocurrency available today!  All accounts are insured up to the limits set by <strong>FRDIC (Federal Robcoin Deposit Insurance Corporation)</strong> and covered by all applicable laws.</p>
               <h3 class="logo-title"><strong>Register for a new Robcoin account today and receive 500 free Robcoins in your account!  What's not to love!?</strong></h3>
             </div>
             <div class="row spacer">
@@ -88,7 +88,7 @@
                         </form>
                       </div>
                       <div class="modal-footer">
-                        <h3 id="sign-up-status"></h3>
+                        <h4 id="sign-up-status"></h4>
                       </div>
                     </div>
                   </div>
@@ -127,7 +127,7 @@
                           </form>
                         </div>
                         <div class="modal-footer">
-                          <p id="change-pw-status"></p>
+                          <h4 id="change-pw-status"></h4>
                         </div>
                       </div>
                     </div>
@@ -172,7 +172,7 @@
       </div>  <!-- Robcoin intro end -->
 
       <div class="row spacer">
-        <div id="user-status" class="col-lg-12"><p>No user signed in</p></div>
+        <div id="user-status" class="col-lg-12"><h4>No user signed in</h4></div>
       </div>
 
       <div id="acct-trans" class="row"> <!-- Account transaction div starts -->
@@ -212,7 +212,7 @@
                   </form>
                 </div>
                 <div class="modal-footer">
-                  <p id="post-trans-status"></p>
+                  <h4 id="post-trans-status"></h4>
                 </div>
               </div>
             </div>
@@ -220,8 +220,40 @@
         </div> <!-- Post transaction modal ends -->
       </div>  <!-- Account transaction div ends -->
 
+      <div id="delete" class="row"> <!-- Destroy account div starts -->
+        <div class="col-md-4"><p></p></div>
+        <div class="col-md-4 test">   <!-- Delete robcoin modal starts -->
+          <!-- Delete robcoin modal button trigger modal -->
+          <button type="button" class="btn btn-danger btn-md" data-toggle="modal" data-target="#del-robcoin">DELETE ACCOUNT BALANCE</button>
+          <!-- Delete robcoin modal -->
+          <div data-backdrop="static" data-keyboard="false" class="modal fade modal-label" id="del-robcoin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">DELETE YOUR BALANCE?</h4>
+                </div>
+                <div class="modal-body">
+                  <h4>ARE YOU SURE YOU WANT TO DELETE YOUR ROBCOIN BALANCE?</h4>
+                  <p>Well, if you're sure you want to, you can delete your balance.  The good news is that your login account will remain intact.</p>
+                  <p>Also, <strong>(and keep this between us)</strong> the next time you login we'll give you another 500 free Robcoins!  I know...we're pretty generous, aren't we? <h4>But, remember, it's our little  secret!!</h4></p>
+                  <form id="del-robcoin-warning">
+                    <button id="del-robcoin-cancel" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button id="del-robcoin-submit" type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <h4 id="del-robcoin-status"></h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- Delete robcoin balance modal ends -->
+        <div class="col-md-4"><p></p></div>
+      </div> <!-- Destroy account div ends -->
+
       <div class="row spacer">
-        <div class="col-lg-12"><p>version 1.0</p></div>
+        <div class="col-lg-12"><p>version 1.1</p></div>
       </div>
     </body>
 </html>

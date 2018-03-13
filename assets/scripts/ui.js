@@ -8,13 +8,13 @@ const signInSuccess = function (data) {
   $('#pre-login').slideUp('slow')
   $('#post-login').slideDown('slow')
   $('#acct-trans').slideDown('slow')
+  $('#delete').slideDown('slow')
   $('#sign-in-modal').modal('toggle')
   $('#user-status').text('Welcome ' + store.user.email + '!')
 }
 
 const initNewAcctSuccess = function () {
-  console.log('fuq ya')
-  console.log('in initNewAcctSuccess: store.account is', store.account)
+  $('#user-status').text('Welcome ' + store.user.email + '!  A deposit of 500 Robcoins has been made to your account!')
 }
 
 const signInFailure = function (data) {
@@ -33,12 +33,20 @@ const signUpSuccess = function (data) {
   return store.status
 }
 
+const onBalanceDeleteSuccess = function () {
+  $('#del-robcoin').modal('toggle')
+  $('#acct-trans').slideUp('slow')
+  $('#delete').slideUp('slow')
+  $('#user-status').text('Your account balance has been deleted.  Sign in to get another 500 free Robcoin.')
+}
+
 const signUpFailure = function (data) {
 
 }
 
 const signOutSuccess = function (data) {
   $('#sign-out-modal').modal('toggle')
+  $('#delete').slideUp('slow')
   $('#acct-trans').slideUp('slow')
   $('#post-login').slideUp('slow')
   $('#pre-login').slideDown('slow')
@@ -72,5 +80,6 @@ module.exports = {
   changePWSuccess,
   displayBalance,
   onPostTransactionSuccess,
+  onBalanceDeleteSuccess,
   initNewAcctSuccess
 }

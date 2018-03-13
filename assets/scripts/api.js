@@ -48,6 +48,17 @@ const changePW = function (data) {
   })
 }
 
+const balanceDelete = function () {
+  event.preventDefault()
+  return $.ajax({
+    url: config.apiOrigin + '/balances/' + store.account.id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 const initNewAcct = function () {
   const data = {
     'balance': {
@@ -139,5 +150,6 @@ module.exports = {
   initNewAcct,
   checkBalance,
   postTransaction,
+  balanceDelete,
   getAcctStatus
 }

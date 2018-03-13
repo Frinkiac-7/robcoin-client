@@ -3,7 +3,6 @@
 const getFormFields = require('../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
-const store = require('./store')
 
 // Sign-in functions
 const signIn = function (event) {
@@ -16,6 +15,12 @@ const signIn = function (event) {
     .catch(ui.signInFailure)
 }
 
+const balanceDelete = function () {
+  event.preventDefault()
+  api.balanceDelete()
+    .then(ui.onBalanceDeleteSuccess)
+    // .catch(console.error())
+}
 const signUp = function (event) {
   event.preventDefault()
   const userForm = getFormFields(this)
@@ -27,7 +32,7 @@ const signUp = function (event) {
       .then(ui.signUpSuccess)
       // .then(initNewAcct())
       // .catch(ui.signUpFailure)
-      .catch(console.error())
+      // .catch(console.error())
   }
 }
 
@@ -36,14 +41,14 @@ const changePW = function (event) {
   const userForm = getFormFields(this)
   api.changePW(userForm)
     .then(ui.changePWSuccess)
-    .catch(console.error())
+    // .catch(console.error())
 }
 
 const signOut = function () {
   event.preventDefault()
   api.signOut()
     .then(ui.signOutSuccess)
-    .catch(console.error)
+    // .catch(console.error)
 }
 
 const initNewAcct = function () {
@@ -81,5 +86,6 @@ module.exports = {
   postTransaction,
   checkBalance,
   initNewAcct,
+  balanceDelete,
   reset
 }
