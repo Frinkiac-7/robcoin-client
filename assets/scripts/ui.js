@@ -29,7 +29,7 @@ const signUpSuccess = function (data) {
   $('#sign-up-status').text('')
   $('#sign-up-modal').modal('toggle')
   $('#sign-in-modal').modal('toggle')
-  $('#sign-in-status').text('This is your first login!')
+  $('#sign-in-status').text('Welcome! When you log in with your new user account it will also set up your bank account with 500 Robcoins!  Easy peasy, isn\'t it?!')
   return store.status
 }
 
