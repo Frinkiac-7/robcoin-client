@@ -62,7 +62,7 @@ const changePWSuccess = function (data) {
 const displayBalance = function (data) {
   $('#acct-id').text(store.account.id)
   $('#acct-blnc').text(store.account.balance)
-  $('#user-status').text(store.user.email + '\'s balance is ' + store.account.balance)
+  $('#user-status').text(store.user.email + '\'s balance is $' + store.account.balance)
 }
 
 const onPostTransactionSuccess = function () {
