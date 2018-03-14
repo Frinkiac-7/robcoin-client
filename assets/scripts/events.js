@@ -75,6 +75,8 @@ const reset = function () {
   $('#sign-in-status').text('')
   $('#sign-up-form')[0].reset()
   $('#sign-up-status').text('')
+  $('#change-pw-form')[0].reset()
+  $('#change-pw-status').text('')
   $('#post-trans-form')[0].reset()
   $('#post-trans-status').text('')
 }

@@ -24,5 +24,6 @@ $(() => {
   $('#chck-acct-btn').click('button', events.checkBalance)
   $('#sign-in-cancel').click('button', events.reset)
   $('#sign-up-cancel').click('button', events.reset)
+  $('#change-pw-cancel').click('button', events.reset)
   $('#post-trans-cancel').click('button', events.reset)
 })
