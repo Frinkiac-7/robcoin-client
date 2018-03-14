@@ -2,7 +2,7 @@
 
 # Robcoin - Fun with cryptocurrency
 
-Robcoin is an account management app for an eponymous pseudo-cryptocurrency.  The backend API repo can be found at https://github.com/Frinkiac-7/robcoin
+Robcoin is an account management app for an eponymous pseudo-cryptocurrency.  The app works by tying into a backend API (repo is at: https://github.com/Frinkiac-7/robcoin) for Create, Read, Update, and Destroy methods for account transactions written in Rails.
 
 ## Features
 
@@ -24,6 +24,12 @@ Robcoin is an account management app for an eponymous pseudo-cryptocurrency.  Th
 - `Issue: Only accepts whole number transactions`: Next version will add the ability to post transactions with decimal values of .01 to .99.
 
 - `Feature: Establish actual cryptocurrency`: Explore possibility of converting robcoin from pseudo to actual cryptocurrency
+
+- `Feature: Account transactions & history`: Currently, the app only allows for balance tracking so a ledger is the next logical enhancement.
+
+- `Feature: See a chart of my balance history`: This is a nice to have feature that would likely follow the ledger enhancement.
+
+- `Feature: Foreign exchange rates`: The ability to determine exchange rates against other currencies would be an interesting challenge.
 
 ## Development Process
 
@@ -49,7 +55,9 @@ The development of this app will benefit greatly from lessons learned during my 
   - Day 5: Pray and present
 
 ## Project Story
-TBD
+This project benefited immensely from the lessons learned during my first coding effort.  Specifically, the nature of the work ahead of me was clearer so it was easier to plan my approach and focus so I spent less time getting lost in the weeds while losing sight of the immediate task at hand.  This minimized the amount of time spent on troubleshooting issues as they were more clearly defined.
+
+The development process was much more iterative and focused on incremental steps to a much greater extent than I had before.  Of course, there was the issue of my forgetting to use the correct user controller earlier on which led to a last minute scramble.  Thankfully, the snow gods intervened (praised be the snow gods) and additional time was available to correct my oversight.  This also led to this project's "ah-ha!" which demonstrated just how much more there is to truly understanding Rails.
 
 ## [License](LICENSE)
 
