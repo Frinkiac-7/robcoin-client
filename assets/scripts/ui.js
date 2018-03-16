@@ -56,7 +56,13 @@ const signOutSuccess = function (data) {
 const changePWSuccess = function (data) {
   $('#change-pw-form')[0].reset()
   $('#change-pw-modal').modal('toggle')
-  $('#user-status').text('Password for ' + store.user.email + 'successfully changed!')
+  $('#user-status').text('Password for ' + store.user.email + ' successfully changed!')
+}
+
+const changePWFailure = function (data) {
+  $('#change-pw-form')[0].reset()
+  // $('#change-pw-modal').modal('toggle')
+  $('#change-pw-status').text('Error during password reset.  Please try again.')
 }
 
 const displayBalance = function (data) {
@@ -78,6 +84,7 @@ module.exports = {
   signUpFailure,
   signOutSuccess,
   changePWSuccess,
+  changePWFailure,
   displayBalance,
   onPostTransactionSuccess,
   onBalanceDeleteSuccess,

@@ -41,6 +41,7 @@ const changePW = function (event) {
   const userForm = getFormFields(this)
   api.changePW(userForm)
     .then(ui.changePWSuccess)
+    .catch(ui.changePWFailure)
     // .catch(console.error())
 }
 
