@@ -123,18 +123,8 @@ const postTransaction = function (data) {
     let delta = ''
     if (store.transaction.type === 'deposit') {
       delta = Number(store.account.balance) + Number(store.transaction.amount)
-      console.log('store.account.balance is', store.account.balance)
-      console.log('store.account.balance is type', typeof Number(store.account.balance))
-      console.log('store.transaction.amount is', Number(store.transaction.amount))
-      console.log('store.tranaction.amount is type', typeof Number(store.transaction.amount))
-      console.log('deposit balance is now', delta)
     } else if (store.transaction.type === 'withdrawal') {
       delta = Number(store.account.balance) - Number(store.transaction.amount)
-      console.log('store.account.balance is', store.account.balance)
-      console.log('store.account.balance is type', typeof Number(store.account.balance))
-      console.log('store.transaction.amount is', Number(store.transaction.amount))
-      console.log('store.tranaction.amount is type', typeof Number(store.transaction.amount))
-      console.log('withdrawal balance is now', delta)
     }
     return $.ajax({
       url: config.apiOrigin + '/balances/' + store.account.id,
